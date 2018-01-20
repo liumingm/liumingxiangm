@@ -1,0 +1,205 @@
+
+@charset "UTF-8";
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, legend, img, fieldset, section, article, aside, header, footer, nav, main, figure, figcaption {
+  margin: 0;
+  padding: 0; }
+ul, ol, li {
+    list-style: none; 
+}
+  
+h1, h2, h3, h4, h5, h6 {
+    font-size: 16px;
+    font-weight: 100; 
+}
+  
+a, u {
+    text-decoration: none; 
+}
+  
+b, strong {
+    font-weight: 100; 
+}
+  
+i, em {
+    font-style: normal; 
+}
+  
+img {
+    display: block;
+    border: 0; 
+}
+body{
+    background: url(../images/body_bj.jpg);
+}
+.header{
+    background: #303030;
+    height: 76px;
+}
+.logo{
+    margin-left: 30px;
+    margin-top: 20px;
+    width: 262px;
+    height: 45px;
+    float: left;
+}
+.topNav{
+    text-align: center;
+    width: 1000px;
+    position: absolute;
+    right: 0px;
+    height: 75px;
+}
+.topNav ul{
+    margin-left:70px;
+    height: 75px;
+}
+.topNav ul li{
+    float:left;
+    width: 82px;
+    height: 75px;
+    text-align: center;
+}
+.topNav ul li a img{
+    margin-top:10px!important;
+    margin: auto;
+    display: block;
+    height: 35px;
+}
+.topNav ul li a span{
+    margin-top: 6px;
+    display: block;
+    color: #FFF;
+    font-size:12px;
+
+}
+.topNav ul li:hover{
+    background:#404040; 
+}
+.nav{
+    background: #575757;
+    height: 41px;
+    border-bottom: 1px solid #212121;
+}
+.nav ul li{
+    float: left;
+    display: block;
+    height: 41px;
+    line-height: 41px;
+    position: relative;
+}
+.nav ul li a{
+    float: LEFT;
+    color: #FFF;
+    padding: 0px 12px;
+    display: block;
+    text-decoration: none;
+}
+.nav ul li a img{
+    border: none;
+    width: 17px;
+    height: 18px;
+    display:inline-block;
+    vertical-align: middle;
+}
+.nav ul li a span{
+    margin-left:10px;
+    font-size:12px;
+}
+.nav ul li .border{
+    height: 13px;
+    width: 0px;
+    border-right: 1px solid #656565;
+    margin-top: 15px;
+    border-left: 1px solid #303030;
+    display: inline-block;
+}
+.nav ul li a .num{
+    width: 32px;
+    height: 16px;
+    background: url(/images/index-11_22.png) no-repeat scroll;
+    display: inline-block;
+    line-height: 16px;
+    vertical-align: middle;
+    text-align: center;
+}
+.nav ul li:hover{
+    background:#404040;
+}
+
+
+
+
+
+
+
+
+#mainPage{
+    height:510px;
+    float:left;
+} 
+.classify{
+    float: left;
+    height:519px;
+    overflow:auto;
+    background:#212121;
+    margin: 0px;
+    padding: 0px;
+    width:175px;
+    color: #192E32;
+    font: 12px Microsoft Yahei, "sans-serif", "Arial", "Verdana";
+}
+.tabbar-div{
+    padding-left: 10px;
+    height: 34px;
+    padding-top: 0px;
+    background: #303030;
+}
+.tabbar-div p{
+    margin: 1px 0 0 0;
+}
+.tabbar-div p span{
+    line-height: 33px;
+    font-weight: bold;
+    padding: 4px 15px 4px 18px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    color: #fff;
+}
+menu-list ul{
+    color: #335B64;
+}
+.common{
+    display: block;
+    border-top: #7f7f7f 1px solid;
+    width: 100%;
+    color: #FFF;
+    line-height: 42px;
+    text-align: left;
+    text-indent:40px;
+}
+.ico_1{
+    display:block;
+    background: #575757 url(/images/menu_1.png) 9px 0 no-repeat;
+}
+.ico_2{
+    background: #454545 url(/images/menu1_1.png) 9px 0px no-repeat;
+}
+.son-menu{
+    display:none;
+}
+.son{
+    
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    font-weight: normal;
+    background: #575757;
+}
+.son a{
+    font-size: 12px;
+    color:#fff;
+}
+.son-menu .son:hover{
+    background:#000;
+}

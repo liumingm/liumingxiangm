@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/listGoods.css' />
+  </head>
+  <body>
+    <div id="tabber-main">
+      <!-- 商品列表 -->
+      <div id="shop-list">
+        <!-- 头部 -->
+        <div id="shop-header">
+        <h1>ECSHOP管理中心</h1>
+        <span class="action-span1">-商品列表</span>
+        <i><img src="images/jnsy.png"></i>
+          <span class="action-span">
+            <a href="addGoods" target="content">添加新商品</a>
+          </span>
+        </div>
+      <!-- 搜索 -->
+        <div class="form-div">
+          <form>
+            <img src="images/icon_search.gif" width="26" height="22">
+            <select name="cat_id" style="width: 158px">
+              <option value="0">所有分类</option>
+            </select>
+            <select name="brand_id" style="width: 105px">
+              <option value="0">所有品牌</option>
+            </select>
+            <select name="intro_type" style="width: 72px">
+              <option value="0">全部</option>
+            </select>
+            <select name="is_on_sale" style="width: 58px">
+              <option value="0">全部</option>
+            </select>
+            <span>关键字</span>
+            <input type="text" name="keyword" size="15" id="search">
+            <input type="submit" value="搜索" class="button"  onclick="key()">
+          </form>
+        </div>
+
+        <div class="list-div">
+          <table cellpadding="3" cellspacing="1">
+            <tbody class="l-list">
+              <tr>
+                <th>
+                  <input type="checkbox" name="">
+                  <a href="">编号</a>
+                  <img src="images/sort_desc.gif" style="display:inline-block">
+                </th>
+                <th>
+                  <a href="">商品名称</a>
+                </th>
+                <th>
+                  <a href="">货号</a>
+                </th>
+                <th>
+                  <a href="">价格</a>
+                </th>
+                <th>
+                  <a href="">上架</a>
+                </th>
+                <th>
+                  <a href="">精品</a>
+                </th>
+                <th>
+                  <a href="">新品</a>
+                </th>
+                <th>
+                  <a href="">热销</a>
+                </th>
+                <th>
+                  <a href="">推荐排序</a>
+                </th>
+                <th>
+                  <a href="">库存</a>
+                </th>
+                <th>
+                  <a href="">虚拟销量</a>
+                </th>
+                <th>
+                  <a href="">操作</a>
+                </th>
+              </tr>
+             
+            </tbody>
+          </table>
+          <div id="turn-page">
+            总计<span id="totalRecords"></span>个记录分为<span id="totalPages">
+
+            </span>页当前第<span id="pageCurrent">1</span>页，每页
+            <input type="text" id="pageSize" value="3">
+            <span id="page-link">
+              <a href="javascript:flpage(1)">第一页</a>
+              <a href="javascript:endPage(-1)">上一页</a>
+              <a href="javascript:endPage(1)">下一页</a>
+              <a href="javascript:flpage()">最末页</a>
+              <select name="" id="gotoPage" onchange="change()" >
+               
+              </select>
+            </span>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+
+$(".list-div").on("click",".goods-list .cen .dele",function(){
+  console.log(this)
+  $(this).parents("tr").remove();
+  var goodsNumber=$(this).parents("tr").find("td").eq(3).html();
+  $.ajax({
+    url:"/removedata",
+    type:"post",
+    data:{
+      goodsNumber:goodsNumber
+    },
+    success:function(res){
+      alert(res)
+    }
+  })
+})
+
+
+
+
+
+
+
+
+
+
+//每页显示多少条数据
+$("#pageSize").keypress(function(e){
+    var e=event.srcElement;
+    if(e.keyCode==13){ 
+      $(this).html($(this).val())
+    }
+   deliver()
+})
+
+
+//跳转页面
+function change(){
+  $("#pageCurrent").html($("#gotoPage").find("option:selected").text()||1)
+  deliver()
+}
+//点击跳转起始页和末尾页
+function flpage(num){
+  $("#pageCurrent").html(num||$("#gotoPage option:last").val())
+  //console.log($("#pageCurrent").html())
+  deliver()
+}
+//上下页
+function endPage(num){
+  if($("#pageCurrent").html()*1+num>$("#gotoPage option:last").val()){
+    alert("够了，别点了")
+  }else if($("#pageCurrent").html()*1+num==0){
+            alert("差不多可以了")
+    }else{
+      $("#pageCurrent").html($("#pageCurrent").html()*1+num)
+      console.log($("#pageCurrent").html())
+      deliver()
+    }
+}
+//ajax发送数据
+  deliver()
+  function deliver(){
+        $.ajax({
+            url:"/goods",
+            type:"get",
+            data:{
+              condition:1,
+              perPageCnt:$("#pageSize").val(),
+              pageNO : $("#pageCurrent").html()
+            },
+            success:function(res){
+                var perPageCnt = $("#pageSize").val()
+                var count = res.total; //总数量
+                var data = res.data;  //总商品信息 
+                var allPage = Number(Math.ceil(count/perPageCnt)) //共有多少页
+                var nowPage = $("#pageCurrent").html()//当前页面的值
+                $("#totalRecords").html(count)          //总个数
+                $("#totalPages").html(allPage)          //页码值
+                $("#gotoPage option").remove()
+                for(j=0;j<allPage;j++){
+                    var s= j+1;
+                    var slt = 
+                    `<option value="${s}" >${s}</option>`
+                    $("#gotoPage").append(slt)
+                    $("#gotoPage option[value="+nowPage+"]").attr("selected",true);
+                }
+                $(".goods-list").remove()
+                for(var i in data){
+                    console.log(data[i])
+                    var td=`
+                    <tr class="goods-list">
+                        <td class="tabel-first"><input type="checkbox"/>${data[i]._id}</td>
+                        <td>${data[i].goodsName}</td>
+                        <td >${data[i].goodsNumber}</td>
+                        <td >${data[i].price}</td>
+                        <td ><img src="/images/yes.gif" /></td>
+                        <td ><img src="/images/no.gif" /></td>
+                        <td "><img src="/images/no.gif" /></td>
+                        <td ><img src="/images/yes.gif" /></td>
+                        <td >6767</td>
+                        <td >6464</td>
+                        <td >${data[i].goodsCount}</td>
+                        <td class="cen">
+                            <a  href="javascript:viod(0)">
+                                <img src="/images/icon_view.gif" title="查看"/>
+                            </a>
+                            <a  href="javascript:viod(0)">
+                                <img src="/images/icon_edit.gif" title="编辑"/>
+                            </a>
+                            <a  href="javascript:viod(0)">
+                                <img src="/images/icon_copy.gif" title="复制"/>
+                            </a>
+                            <a  href="javascript:viod(0)" class="dele">
+                                <img id="dele" src="/images/icon_trash.gif" title="回收"/>
+                            </a>
+                        </td>
+                    </tr>`
+                    $(".l-list").append(td)
+                }
+            }
+
+        })
+    }
+
+
+
+
+
+
+</script>

@@ -1,0 +1,161 @@
+@charset "UTF-8";
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, legend, img, fieldset, section, article, aside, header, footer, nav, main, figure, figcaption {
+  margin: 0;
+  padding: 0; 
+}
+ul, ol, li {
+    list-style: none; 
+}
+  
+h1, h2, h3, h4, h5, h6 {
+    font-size: 16px;
+    font-weight:100;
+}
+a, u {
+    text-decoration: none; 
+}
+  
+b, strong {
+    font-weight: 100; 
+}
+  
+i, em {
+    font-style: normal; 
+}
+  
+img {
+    display: block;
+    border: 0; 
+}
+/* html{
+    display:block;
+    width:1000px;
+    height:600px;;
+}
+body{
+    float:left;
+} */
+ #tabber-main{
+	height: 100%;
+	padding: 10px;
+	overflow: auto;
+}
+#shop-list{
+	width: 100%;
+	height: 100%;
+}  
+  .action-span>a{
+	float: right;
+	height: 26px;
+	line-height: 26px;
+	padding: 0 10px 0 23px;
+	background: #c43926 url(/images/icon_add02.gif) no-repeat 6px center;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 13px;
+	font-weight: normal;
+	text-align: center;
+	cursor: pointer;
+}
+#shop-header{
+	height: 30px;
+	white-space: nowrap;
+	border-bottom: 1px solid #ccc;
+	color: #333;
+	padding: 7px 10px;
+	margin: 0 0 10px 0;
+	overflow: hidden;
+
+}
+
+#shop-header>h1{
+	display: inline-block;
+	font-size: 22px;
+}
+#shop-header>i{
+	display: inline-block;
+	vertical-align: middle;
+}
+#shop-header>i>img{
+	display: inline-block;
+	
+}
+.action-span1{
+	font-size: 20px;
+}
+
+.form-div{
+	background: #f3f3f3 url(/images/th_bg.gif) repeat-x;
+	border:1px solid #ddd;
+	padding: 5px;
+	color: #808080;
+	margin: 0 0 10px 0;
+}
+.form-div>form{
+    
+	display: block;
+}
+.form-div>form>img{
+    display:inline-block;
+	vertical-align: middle;
+}
+.form-div .button{
+	padding: 5px 15px 5px;
+	margin: 2px 2px;
+	border:none;
+	background: #ff3f3f;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 3px;
+}
+
+.list-div{
+	border:0;
+	width: 100%;
+}
+.list-div table{
+	width: 100%;
+	background: #ddd;
+}
+.list-div table tr{
+	
+}
+.list-div table tr th{
+	line-height: 39px;
+	background: #f3f3f3 url(/images/th_bg.gif) repeat-x;
+	white-space: nowrap;
+
+}
+.tabel-first input{
+	font-weight:100;
+	font-size:12px;
+	text-align:left;
+}
+.list-div table tr th a{
+	color: #000;
+} 
+.l-list td{
+	background:#fff;
+	text-align: center;
+}
+.l-list .change img{
+	display:inline-block;
+}
+.cen a img{
+	display:inline-block;
+}
+#turn-page {
+	text-align: right;
+	font-size:12px;
+}
+#pageSize{
+	width:26px;
+	height:16px;
+	vertical-align: middle;
+	outline: 0;
+}
+#page-link a{
+	color:#192E32;
+	cursor: pointer;
+	font-size:12px;
+}
